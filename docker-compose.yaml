@@ -3,7 +3,6 @@ version: '3.5'
 services:
   db_user:
     image: postgres:15.0-alpine3.16
-    container_name: db_user
     ports:
       - "5432:5432"
     environment:
@@ -13,9 +12,7 @@ services:
     volumes:
       - ./pg_data:/var/lib/postgresql/data
   backend:
-    build: .
     image: sh1nso/kislov_app
-    container_name: backend
     links:
       - "db_user"
     depends_on:
