@@ -53,3 +53,4 @@ class ActivateView(Resource):
             return 'Аккаунт успешно активирован', 201
         except Exception as e:
             return e, 400
+
