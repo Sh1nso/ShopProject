@@ -28,7 +28,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.VM_USRNAME }}
           password: ${{ secrets.VM_PASSWORD }}
-          port: ${{ secrets.PORT }}
           source: "deploy/docker-compose.yaml"
           target: "flask_app_ci"
           strip_components: 1
