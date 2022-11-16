@@ -35,8 +35,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          username: ${{ secrets.VM_USRNAME }}
+          password: ${{ secrets.VM_PASSWORD }}
           script: |
             cd flask_app_ci
             echo ${{ secrets.VM_PASSWORD }} | sudo -S docker-compose up -d
