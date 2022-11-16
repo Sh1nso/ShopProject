@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+  db_user:
+    image: postgres:15.0-alpine3.16
+    container_name: db_user
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=user_db
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+  backend:
+    image: sh1nso/kislov_app:$GITHUB_REF_NAME-$GUTHUB_RUN_ID
+    container_name: backend
+    links:
+      - "db_user"
+    depends_on:
+      - db_user
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=/DimaTechTEST/ShopProject/app.py
+      - SQLALCHEMY_DATABASE_URI=postgresql://admin:admin@db_user:5432/user_db
+    command: bash -c '/DimaTechTEST/ShopProject/wait-for-it.sh db_user:5432 -- flask db upgrade && python3 /DimaTechTEST/ShopProject/app.py'
