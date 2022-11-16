@@ -11,9 +11,10 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_DB=user_db
     volumes:
-      - "C:/Users/dimas/Desktop/backend:/var/lib/postgresql/data"
+      - ./pg_data:/var/lib/postgresql/data
   backend:
     build: .
+    image: sh1nso/kislov_app
     container_name: backend
     links:
       - "db_user"
