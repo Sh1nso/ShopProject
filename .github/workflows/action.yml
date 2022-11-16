@@ -6,3 +6,5 @@ jobs:
     steps:
       - name: clone code
         uses: actions/checkout@v2
+      - name: build docker
+        run: docker build -t sh1nso/kislov_app:$GITHUB_REF_NAME-$GUTHUB_RUN_ID .
