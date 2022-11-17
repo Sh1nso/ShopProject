@@ -39,5 +39,5 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           script: |
             cd flask_app_ci
-            chmod +x wait-for-it.sh
+            sudo chmod +x wait-for-it.sh
             echo ${{ secrets.VM_PASSWORD }} | sudo -S docker-compose up -d
