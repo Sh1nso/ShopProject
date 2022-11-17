@@ -24,4 +24,3 @@ services:
     environment:
       - FLASK_APP=/DimaTechTEST/ShopProject/app.py
       - SQLALCHEMY_DATABASE_URI=postgresql://admin:admin@db_user:5432/user_db
-    #command: bash -c '/DimaTechTEST/ShopProject/wait-for-it.sh db_user:5432 -- flask db upgrade && python3 /DimaTechTEST/ShopProject/app.py'
